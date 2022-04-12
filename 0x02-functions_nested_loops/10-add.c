@@ -1,56 +1,13 @@
-100-times_table.c
-
-Ans:
-
 #include "main.h"
 
 /**
- * print_times_table - prints times table
- * @n : times table to use
- * Return:void
+ * add - Check Holberton
+ * @a: An integer a
+ * @b: An integer b
+ * Description: Function that adds two integers and returns the result
+ * Return: Result to add a and b
  */
-
-void print_times_table(int n)
+int add(int a, int b)
 {
-
-int a = 0, rep, b;
-
-if (n < 0 || n > 15)
-	return;
-
-while (a <= n)
-{
-	for (b = 0; b <= n; b++)
-	{
-		rep = a * b;
-		if (b == 0)
-			_putchar('0' + rep);
-		else if (rep < 10)
-		{
-			_putchar(' ');
-			_putchar(' ');
-			_putchar('0' + rep);
-		}
-		else if (rep < 100)
-		{
-			_putchar(' ');
-			_putchar('0' + rep / 10);
-			_putchar('0' + rep % 10);
-		}
-		else
-		{
-			_putchar('0' + rep / 100);
-			_putchar('0' + (rep - 100) / 10);
-			_putchar('0' + rep % 10);
-		}
-		if (b < n)
-		{
-			_putchar(',');
-			_putchar(' ');
-		}
-	}
-	_putchar('\n');
-	a++;
+return (a + b);
 }
-}
-
