@@ -1,25 +1,54 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "main.h"
+
 /**
- * main - main block
- * Description: computes and prints the sum of all the multiples of 3 or
- * 5 below 1024 (excluded), followed by a new line
- * Return: 0
+ * print_times_table - prints the times table
+ * @n: integer for which the times table will be printed
+ *
+ * Description: prints the times table
+ *
+ * Return: void
  */
-int main(void)
+
+void print_times_table(int n)
 {
-	int c = 0;
-	int sum = 0;
+	int row, column, product;
 
-	while (c < 1024)
+	if (n >= 0 && n < 15)
 	{
-		if (c % 3 == 0 || c % 5 == 0)
+		for (row = 0; row <= n; row++)
 		{
-			sum += c;
-		}
+			for (column = 0; column <= n; column++)
+			{
+				product = row * column;
 
-		c++;
+				if (column == 0)
+					_putchar('0');
+				else if (product < 10)
+				{
+					_putchar(',');
+					_putchar(' ');
+					_putchar(' ');
+					_putchar(' ');
+					_putchar(product % 10 + '0');
+				}
+				else if (product >= 10 && product < 100)
+				{
+					_putchar(',');
+					_putchar(' ');
+					_putchar(' ');
+					_putchar((product / 10) % 10 + '0');
+					_putchar(product % 10 + '0');
+				}
+				else if (product > 99 && product < 1000)
+				{
+					_putchar(',');
+					_putchar(' ');
+					_putchar(product / 100 + '0');
+					_putchar((product / 10) % 10 + '0');
+					_putchar(product % 10 + '0');
+				}
+			}
+			_putchar('\n');
+		}
 	}
-	printf("%i\n", sum);
-	return (0);
 }
