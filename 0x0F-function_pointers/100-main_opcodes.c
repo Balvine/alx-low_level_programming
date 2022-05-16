@@ -26,4 +26,3 @@ int main(int argc, char *argv[])
 	printf("%02hhx\n", ((char *)main)[i]);
 	return (0);
 }
-
