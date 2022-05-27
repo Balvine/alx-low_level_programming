@@ -1,40 +1,37 @@
 #include "lists.h"
+#include <stdlib.h>
 
 /**
-  * delete_nodeint_at_index - fills memory with a constant byte
-  * @head: is the owner of the dog
-  * @index: is a number
-  * Return: a number
-  */
+ * delete_nodeint_at_index - Delete a node at a given positiion.
+ * @head: First node address.
+ * @index: Position of the node to delete.
+ * Return: If success (1).
+ **/
+
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
-	listint_t *savepoin, *headcopy;
 	unsigned int i;
+	listint_t *current, *next;
 
-	headcopy = *head;
-	if (headcopy != NULL && index != 0)
+	if (head == NULL || *head == NULL)
+		return (-1);
+	if (index == 0)
 	{
-		for (i = 0; i < index && headcopy != NULL; i++)
-		{
-			savepoin = headcopy;
-			headcopy = headcopy->next;
-		}
-		if (headcopy != NULL)
-		{
-			savepoin->next = headcopy->next;
-			free(headcopy);
-			return (1);
-		}
-		else
-			return (-1);
-	}
-	if (headcopy != NULL && index == 0)
-	{
-		savepoin = headcopy->next;
-		free(headcopy);
-		*head = savepoin;
+		next = (*head)->next;
+		free(*head);
+		*head = next;
 		return (1);
 	}
-	else
-		return (-1);
+	current = *head;
+	for (i = 0; i < index - 1; i++)
+	{
+		if (current->next == NULL)
+			return (-1);
+		current = current->next;
+	}
+	next = current->next;
+	current->next = next->next;
+	free(next);
+	return (1);
 }
+

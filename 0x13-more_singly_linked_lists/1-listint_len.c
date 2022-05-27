@@ -1,15 +1,22 @@
 #include "lists.h"
 
 /**
-  * listint_len - fills memory with a constant byte
-  * @h: is the owner of the dog
-  * Return: a number
-  */
+ * listint_len - Calculate the number of elements.
+ * @h: Pointer to a list.
+ * Return: Integer.
+ **/
+
 size_t listint_len(const listint_t *h)
 {
-	size_t i;
+	const listint_t *tp;
+	unsigned int cnr = 0;
 
-	for (i = 0; h != NULL; i++)
-		h = h->next;
-	return (i);
+	tp = h;
+	while (tp)
+	{
+		cnr++;
+		tp = tp->next;
+	}
+	return (cnr);
 }
+

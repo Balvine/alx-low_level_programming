@@ -1,26 +1,21 @@
 #include "lists.h"
+#include <stdlib.h>
 
 /**
-  * sum_listint - fills memory with a constant byte
-  * @head: is the owner of the dog
-  * Return: a address
-  */
+ * sum_listint - Sum all of the data (n) in a list.
+ * @head: Address of the first node of the list.
+ * Return: Integer.
+ **/
+
 int sum_listint(listint_t *head)
 {
-	listint_t *headcopy;
-	int sum = 0;
+	int total = 0;
 
-	headcopy = head;
-	if (headcopy != NULL)
+	while (head != NULL)
 	{
-		while (headcopy->next != NULL)
-		{
-			sum += headcopy->n;
-			headcopy = headcopy->next;
-		}
-		sum += headcopy->n;
-		return (sum);
+		total += head->n;
+		head = head->next;
 	}
-	else
-		return (0);
+	return (total);
 }
+

@@ -1,22 +1,21 @@
 #include "lists.h"
+#include <stdlib.h>
 
 /**
-  * free_listint - fills memory with a constant byte
-  * @head: is the owner of the dog
-  * Return: a number
-  */
+ * free_listint - Frees a list.
+ * @head: Address of the first node of a list.
+ **/
+
 void free_listint(listint_t *head)
 {
-	listint_t *savepoin;
+	listint_t *tp, *tp2;
 
-	if (head != NULL)
+	tp = head;
+	while (tp != NULL)
 	{
-		while (head->next != NULL)
-		{
-			savepoin = head->next;
-			free(head);
-			head = savepoin;
-		}
-		free(head);
+		tp2 = tp->next;
+		free(tp);
+		tp = tp2;
 	}
 }
+

@@ -1,33 +1,34 @@
 #include "lists.h"
+#include <stdlib.h>
 
 /**
-  * add_nodeint_end - fills memory with a constant byte
-  * @head: is the owner of the dog
-  * @n: is a number
-  * Return: a address
-  */
+ * add_nodeint_end - Add a new node at the end of a list.
+ * @head: Address of the first node of a list.
+ * @n: Integer to insert in the new node.
+ * Return: Address of the new node.
+ **/
+
 listint_t *add_nodeint_end(listint_t **head, const int n)
 {
-	listint_t *new, *headcopy;
+	listint_t *temp, *temp2;
 
-	headcopy = *head;
-
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
+	temp = malloc(sizeof(listint_t));
+	if (temp == NULL)
 		return (NULL);
-	new->n = n;
+
+	temp->n = n;
+	temp->next = NULL;
+
 	if (*head == NULL)
 	{
-		new->next = *head;
-		*head = new;
-	}
-	else
-	{
-		while (headcopy->next != NULL)
-			headcopy = headcopy->next;
-		new->next = (headcopy)->next;
-		(headcopy)->next = new;
+		*head = temp;
+		return (temp);
 	}
 
-	return (*head);
+	temp2 = *head;
+	while (temp2->next)
+		temp2 = temp2->next;
+	temp2->next = temp;
+	return (temp);
 }
+

@@ -1,23 +1,25 @@
 #include "lists.h"
+#include <stdlib.h>
 
 /**
-  * get_nodeint_at_index - fills memory with a constant byte
-  * @head: is the owner of the dog
-  * @index: is a number
-  * Return: a address
-  */
+ * get_nodeint_at_index - Find a node in a list.
+ * @head: Address of the first node in a list.
+ * @index: Position of a the node to find (starting from 0).
+ * Return: Node address.
+ **/
+
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
-	listint_t *headcopy;
-	unsigned int i;
+	unsigned int y = 0;
 
-	headcopy = head;
-	if (headcopy != NULL)
-	{
-		for (i = 0; (i < index) && (headcopy != NULL); i++)
-			headcopy = headcopy->next;
-		return (headcopy);
-	}
-	else
+	if (head == NULL)
 		return (NULL);
+	for (y = 0; y < index; y++)
+	{
+		head = head->next;
+		if (head == NULL)
+			return (NULL);
+	}
+	return (head);
 }
+
