@@ -1,24 +1,18 @@
 #include "lists.h"
-#include <stdio.h>
 
 /**
- * print_listint - Print elements of a singly linked list.
- * @h: Pointer to a list.
- * Return: Integer.
- **/
-
+  * print_listint - fills memory with a constant byte
+  * @h: is the owner of the dog
+  * Return: a number
+  */
 size_t print_listint(const listint_t *h)
 {
-	const listint_t *tp;
-	unsigned int cntr = 0;
+	size_t i;
 
-	tp = h;
-	while (tp)
+	for (i = 0; h != NULL; i++)
 	{
-		printf("%d\n", tp->n);
-		cntr++;
-		tp = tp->next;
+		printf("%d\n", h->n);
+		h = h->next;
 	}
-	return (cntr);
+	return (i);
 }
-
